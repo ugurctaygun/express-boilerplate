@@ -1,0 +1,8 @@
+.express-response {
+  font-size: 36px;
+  color: red;
+  border: 1px solid;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
