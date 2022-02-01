@@ -1,26 +1,26 @@
 const express = require("express");
 const app = express();
+const shop = require("./data/shop");
 
 app.set("view engine", "pug");
 
 app.get("/", (req, res) => {
   console.log("Getting /");
-  //   res.status(200).send(createTemplate());
-  //   res.download("server.js");
-  //   res.status(500).json({ message: "Somethin went wrong" });
-  res.render("index", { text: "World" });
+  res.render("index", { shop: shop });
+});
+
+app.get("/form", (req, res) => {
+  res.render("form", { shop: shop });
+});
+
+app.get("/shop", (req, res) => {
+  res.render("shop", { shop: shop });
 });
 
 const userRouter = require("./routes/users");
 
 app.use("/users", userRouter);
 
-function createTemplate() {
-  let template = `
-    <div class="express-response">
-        <p>Hello</p>
-    </div>`;
-  return template;
-}
+app.use(express.static(__dirname + "/public"));
 
 app.listen(3000);
